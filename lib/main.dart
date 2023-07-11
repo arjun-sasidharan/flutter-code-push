@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_code_push/SecondPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -6,7 +7,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +30,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _counter = 100;
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      _counter--;
     });
   }
 
@@ -58,17 +58,31 @@ class _MyHomePageState extends State<MyHomePage> {
                     '$_counter',
                     style: Theme.of(context).textTheme.headline4,
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SecondPage()),
+                        );
+                      }, child: const Text("Go to Second Page"))
                 ],
               ),
             ),
           ),
-          const Text("version 1.0.0+1",),
-          const SizedBox(height: 20,)
+          const Text(
+            "version 1.0.0+1",
+          ),
+          const SizedBox(
+            height: 20,
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        tooltip: 'Decrement',
         child: const Icon(Icons.add),
       ),
     );
