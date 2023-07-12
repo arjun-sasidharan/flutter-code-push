@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_code_push/AnimationPage.dart';
 import 'package:flutter_code_push/SecondPage.dart';
 
 void main() {
@@ -6,22 +7,22 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
+        primarySwatch: Colors.blueGrey,
       ),
-      home: const MyHomePage(title: 'Flutter Code Push - Demo'),
+      home: const MyHomePage(title: 'Flutter Code Push - Demo 2'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
@@ -67,13 +68,23 @@ class _MyHomePageState extends State<MyHomePage> {
                           context,
                           MaterialPageRoute(builder: (context) => const SecondPage()),
                         );
-                      }, child: const Text("Go to Second Page"))
+                      }, child: const Text("Go to Second Page")),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) =>  const AnimationPage()),
+                        );
+                      }, child: const Text("Go to Animation Page"))
                 ],
               ),
             ),
           ),
           const Text(
-            "version 1.0.0+1",
+            "version 1.0.2+1",
           ),
           const SizedBox(
             height: 20,
